@@ -1,0 +1,72 @@
+# Node.js dependencies
+node_modules/
+ 
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output
+.next/
+out/
+
+# Local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+.DS_Store
+.vscode/
+.idea/
+*.log
+*.swp
+
+# Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Package lock files (if using Yarn, you can exclude `package-lock.json`)
+package-lock.json
+
+
+##########################################################
+# Compiled class files
+*.class
+
+# Maven or Gradle
+target/
+build/
+
+# Temporary files
+*.log
+*.tmp
+
+# Local environment files
+*.env
+application.properties
+application.yml
+application-*.properties
+application-*.yml
+
+# IDE configurations
+*.iml
+.idea/
+.vscode/
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+logs/
+
+# Generated files
+*.jar
+*.war
+*.ear
