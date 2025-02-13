@@ -1,12 +1,11 @@
 .heroSection{
-
+    height: 50vh;
 }
 
 .heroSection::after{
     content: '';
 background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     width: 100%;
-    height: 100%;
     position: absolute;
     top: 0;
     z-index: 1;
@@ -35,9 +34,23 @@ background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     color: black;
 }
 
-.image{
-    width: 100%;
-    height: auto;
-    background-size: cover;
+#image{
+    width: 100vw;
+    height: 70vh !important;
+    /* background-size: cover; */
+}
+
+.heroBottom h4{
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.heroBottom button{
+    background-color: #FFCD05;
+    color: black;
+    border-radius: 15px;
+    height: max-content;
+    padding: 15px 25px;
+    font-weight: 500;
 }
 

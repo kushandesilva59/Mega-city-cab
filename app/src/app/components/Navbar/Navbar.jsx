@@ -1,14 +1,49 @@
-
-'use client'
+"use client";
 import Link from "next/link";
-import { useState } from "react";
-import styles from './Navbar.module.css'
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const confirmLogout = () => {
+    toast(
+      <div>
+        <p>Are you sure you want to logout?</p>
+        <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+          <button onClick={handleLogout} className={styles.yesButton}>
+            Yes
+          </button>
+          <button onClick={() => toast.dismiss()} className={styles.noButton}>
+            No
+          </button>
+        </div>
+      </div>,
+      {
+        position: "top-center",
+        autoClose: false, // Prevent auto closing
+        closeButton: false, // Hide default close button
+      }
+    );
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    toast.dismiss(); // Close the toast after clicking Yes
+    window.location.href = "/";
   };
 
   return (
@@ -22,9 +57,14 @@ const Navbar = () => {
         </button>
         <div className={`${styles.navLinks} ${isOpen ? "open" : ""}`}>
           <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/">About</Link>
+          <Link href="/">Services</Link>
+          <Link href="/">Contact</Link>
+          {isAuthenticated && (
+            <button onClick={confirmLogout} className={styles.logoutBtn}>
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </nav>

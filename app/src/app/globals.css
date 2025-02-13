@@ -38,4 +38,31 @@ body {
 
 }
 
+.yesButton {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.yesButton:hover {
+  background: darkred;
+}
+
+.noButton {
+  background: gray;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.noButton:hover {
+  background: darkgray;
+}
+
+
 
