@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import CustomerTable from '../components/CustomerTable/CustomerTable';
+import HomePage from '../components/Home/HomePage';
 
 const page = () => {
 
@@ -11,7 +12,9 @@ const page = () => {
   return (
     <div>Admin page
 
-      <CustomerTable/>
+      {/* <CustomerTable/> */}
+
+      <HomePage />
     </div>
   )
 }

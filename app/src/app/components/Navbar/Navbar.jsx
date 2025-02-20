@@ -60,10 +60,15 @@ const Navbar = () => {
           <Link href="/">About</Link>
           <Link href="/">Services</Link>
           <Link href="/">Contact</Link>
-          {isAuthenticated && (
+
+          {isAuthenticated ? (
             <button onClick={confirmLogout} className={styles.logoutBtn}>
               Logout
             </button>
+          ) : (
+            <Link href="/login" className={styles.loginBtn}>
+              Login
+            </Link>
           )}
         </div>
       </div>

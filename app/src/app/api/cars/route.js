@@ -52,7 +52,7 @@ export async function GET(request) {
     const token = authHeader.split(" ")[1]; // Extract token after "Bearer "
 
     const response = await fetch(
-      "http://localhost:8080/api/cars/all",
+      "http://localhost:8080/api/car/all",
       {
         method: "GET",
         headers: {

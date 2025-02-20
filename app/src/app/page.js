@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "./components/Navbar/Navbar";
 import HeroSection from "./components/HeroSection/HeroSection";
 import Table from "./components/Table/Table";
+import HomePage from "./components/Home/HomePage";
 
 export default function Home() {
  const columns = ["Name", "Email", "Role"];
@@ -15,9 +16,12 @@ export default function Home() {
     <div className="">
       <main className="">
         {/* <Table columns={columns} data={data} />{" "} */}
-
+{/* 
         <Navbar />
-        <HeroSection />
+        <HeroSection /> */}
+
+        <HomePage />
+
       </main>
     </div>
   );

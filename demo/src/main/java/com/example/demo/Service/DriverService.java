@@ -16,4 +16,9 @@ public class DriverService {
         
         return driverRepo.findAll();
     }
+
+
+    public Driver addDriver(Driver driver) {
+       return driverRepo.save(driver);
+    }
 }

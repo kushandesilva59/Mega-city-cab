@@ -1,5 +1,10 @@
 package com.example.demo.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,12 +14,12 @@ public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int driverId;
     private String name;
     private String phoneNumber;
     private String licenseNumber;
-    
-    @OneToOne
-    @JoinColumn(name = "car_id", unique = true) 
-    private Car car;
+        
+      @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, orphanRemoval = true)
+      @JsonManagedReference
+    private List<Car> cars = new ArrayList<>();
 }
