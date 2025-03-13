@@ -17,7 +17,7 @@ export async function POST(request) {
     console.log(token);
 
     // Send data to the backend
-    const response = await fetch("http://localhost:8080/api/bookings/save", {
+    const response = await fetch("http://localhost:8080/api/driver/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,3 +71,55 @@ export async function GET(request) {
     );
   }
 }
+
+export async function PUT(req) {
+  try {
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+      });
+    }
+
+    const token = authHeader.split(" ")[1];
+    const body = await req.json();
+
+    console.log("Sending Request Body:", JSON.stringify(body, null, 2));
+
+    // Forward request to Spring Boot backend
+    const response = await fetch("http://localhost:8080/api/driver", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update booking: ${response.status}`);
+    }
+
+    // Check if response is text or JSON
+    let update;
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      update = await response.json();
+    } else {
+      update = await response.text();
+    }
+
+    console.log("Update Response:", update);
+
+    return NextResponse.json({ update });
+  } catch (error) {
+    console.error("Error updating booking:", error);
+    return new Response(
+      JSON.stringify({ error: error.message || "Internal Server Error" }),
+      {
+        status: 500,
+      }
+    );
+  }
+}
+

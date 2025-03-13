@@ -188,7 +188,7 @@ export default function CustomerTable() {
                 ))}
               </select>
             </div>
-            <div className="mb-2">
+            {/* <div className="mb-2">
               <label className="block text-sm">Driver</label>
               <select
                 value={assignedDriver}
@@ -202,7 +202,7 @@ export default function CustomerTable() {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div className="flex justify-end space-x-2 mt-4">
               <button
                 onClick={() => setIsModalOpen(false)}

@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Entity.Car;
 import com.example.demo.Service.CarService;
+import com.example.demo.model.UpdateBookingDTO;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -29,5 +32,14 @@ public class CarController {
         System.out.println(car);
 
          return carService.addCar(car);
+    }
+
+     @PutMapping("/update")
+    public String updateCar(
+        @RequestBody Car car
+    ) {
+        String response = carService.updateCar(car.getId(),car.getBrand(),car.getModel(),car.getLicensePlate(),car.getPeopleCount(),car.getFreeKm(),car.getPerDayPrice());
+        System.out.println(car);
+        return response;
     }
 }

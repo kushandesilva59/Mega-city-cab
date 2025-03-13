@@ -17,7 +17,7 @@ export async function POST(request) {
     console.log(token);
 
     // Send data to the backend
-    const response = await fetch("http://localhost:8080/api/bookings/save", {
+    const response = await fetch("http://localhost:8080/api/car/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

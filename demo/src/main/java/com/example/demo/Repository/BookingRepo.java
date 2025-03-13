@@ -19,7 +19,7 @@ public interface BookingRepo extends JpaRepository<Booking,Long>{
     @Modifying
     @Transactional
     @Query(value = "UPDATE booking SET driver_id = ?2, car_id = ?3,approve_status=true WHERE id = ?1", nativeQuery = true)
-    int updateBooking(int bookingId, int driverId, int car_id);
+    int confirmBooking(int bookingId, int driverId, int car_id);
 
     
 } 

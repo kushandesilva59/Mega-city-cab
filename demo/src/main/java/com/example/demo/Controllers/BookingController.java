@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Entity.Booking;
 import com.example.demo.Service.BookingService;
+import com.example.demo.Service.CarService;
 import com.example.demo.model.UpdateBookingDTO;
 import com.example.demo.model.UserLoginModel;
 
@@ -23,6 +24,9 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
+
+    @Autowired
+    private CarService carService;
     
 
     @GetMapping("/all")
@@ -44,11 +48,18 @@ public class BookingController {
         return bookingService.getNotApprovedBookings();
     }
 
-    @PutMapping("")
+    @PutMapping("/confirm")
     public String updateBooking(
         @RequestBody UpdateBookingDTO updateBookingDTO
     ) {
-        String response = bookingService.updateBooking(updateBookingDTO.getId(), updateBookingDTO.getDriverId(), updateBookingDTO.getCarId());
+
+        
+
+        // System.out.println("Driver id by car : "+ carService.getCarById(updateBookingDTO.getCarId()));
+
+        // System.out.println("Car id by driver id : "+carService.getCarByDriverId(updateBookingDTO.getDriverId()));
+
+        String response = bookingService.confirmBooking(updateBookingDTO.getId(), updateBookingDTO.getCarId(), updateBookingDTO.getDriverId());
         System.out.println(updateBookingDTO);
         return response;
     }

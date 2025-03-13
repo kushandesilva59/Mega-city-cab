@@ -4,9 +4,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Entity.Car;
 import com.example.demo.Entity.Driver;
 import com.example.demo.Service.DriverService;
 
@@ -17,8 +20,6 @@ public class DriverController {
    @Autowired
     private DriverService driverService;
 
-    @Autowired
-    private CarController carController;
     
     @GetMapping("/all")
     public List<Driver> getAllDrivers(){
@@ -33,4 +34,15 @@ public class DriverController {
     //     carController.addCar(driver.getCar());
     //     return driverService.addDriver(driver);
     // }
+
+       @PutMapping("/update")
+    public String updateDriver(
+        @RequestBody Driver driver
+    ) {
+        String response = driverService.updateDriver(driver.getDriverId(),driver.getName(),driver.getPhoneNumber(),driver.getLicenseNumber());
+        System.out.println(driver);
+        return response;
+    }
 }
+
+

@@ -14,17 +14,16 @@ const BookingForm = () => {
     } else {
       console.log("Have user");
 
-       const user = JSON.parse(localStorage.getItem("user"));
-       console.log("Menna user", user);
-       const updatedFormData = {
-         ...formData,
-         address: user.address,
-         customerName: user.username,
-         email:user.email
-       };
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log("Menna user", user);
+      const updatedFormData = {
+        ...formData,
+        address: user.address,
+        customerName: user.username,
+        email: user.email,
+      };
 
-       setFormData(updatedFormData)
-
+      setFormData(updatedFormData);
     }
   }, []);
 
@@ -39,7 +38,8 @@ const BookingForm = () => {
     approveStatus: false,
     carId: "",
     driverId: "",
-    email:""
+    email: "",
+    peopleCount: 0,
   });
 
   const [error, setError] = useState("");
@@ -59,10 +59,8 @@ const BookingForm = () => {
     e.preventDefault();
 
     const token = localStorage.getItem("token");
-   
 
-
-    console.log("New form data",formData)
+    console.log("New form data", formData);
 
     const body = formData;
     try {
@@ -81,7 +79,7 @@ const BookingForm = () => {
 
       const data = await response.json();
       console.log("Response Data:", body);
-      router.push('/')
+      router.push("/");
     } catch (error) {
       console.error("Error:", error.message);
       setError(error.message);
@@ -138,6 +136,25 @@ const BookingForm = () => {
 
           <div className="mb-4">
             <label
+              htmlFor="date"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Count of people
+            </label>
+            <input
+              type="number"
+              id="peopleCount"
+              name="peopleCount"
+              value={formData.peopleCount}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Enter the count of people"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
               htmlFor="address"
               className="block text-sm font-medium text-gray-700"
             >
@@ -173,8 +190,6 @@ const BookingForm = () => {
               placeholder="Enter your NIC"
             />
           </div>
-
-          
 
           <div className="mb-4">
             <label

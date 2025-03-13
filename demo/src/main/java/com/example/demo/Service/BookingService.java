@@ -42,7 +42,10 @@ public class BookingService {
         return bookingRepo.getNotApprovedBookings();
     }
 
-     public String updateBooking(int bookingId, int carId, int driverId) {
+     public String confirmBooking(int bookingId, int carId, int driverId) {
+
+        System.out.println("Car ID :"+carId);
+
         // Check if car exists
         Car car = carRepo.findById(carId).orElse(null);
         if (car == null) return "Car not found";
@@ -52,7 +55,7 @@ public class BookingService {
         if (driver == null) return "Driver not found";
 
         // Update booking
-        int updated = bookingRepo.updateBooking(bookingId, carId, driverId);
+        int updated = bookingRepo.confirmBooking(bookingId, carId, driverId);
         return (updated > 0) ? "Booking updated successfully" : "Booking not found";
     }
     

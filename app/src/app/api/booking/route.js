@@ -88,7 +88,7 @@ export async function PUT(req) {
     console.log("Sending Request Body:", JSON.stringify(body, null, 2));
 
     // Forward request to Spring Boot backend
-    const response = await fetch("http://localhost:8080/api/bookings", {
+    const response = await fetch("http://localhost:8080/api/bookings/confirm", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

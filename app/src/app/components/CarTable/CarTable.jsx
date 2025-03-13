@@ -114,9 +114,9 @@ export default function DriverTable() {
                 <td className="py-2 px-4 border">{car.brand}</td>
                 <td className="py-2 px-4 border">{car.model}</td>
                 <td className="py-2 px-4 border">{car.licensePlate}</td>
-                <td className="py-2 px-4 border">undefine</td>
-                <td className="py-2 px-4 border">undefine</td>
-                <td className="py-2 px-4 border">undefine</td>
+                <td className="py-2 px-4 border">{car.peapleCount}</td>
+                <td className="py-2 px-4 border">{car.freeKm}</td>
+                <td className="py-2 px-4 border">{car.perDayPrice}</td>
 
                 <td className="py-2 px-4 border">
                   <button

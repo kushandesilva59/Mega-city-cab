@@ -49,43 +49,44 @@ export default function DriverTable() {
   const saveAssignment = async () => {
     if (!selectedDriver) return;
 
-    // const updatedCustomer = {
-    //   id: selectedCustomer.id,
-    //   driverId: Number(assignedDriver),
-    //   carId: Number(assignedCar),
-    // };
+    const updatedDriver = {
+      id: selectedDriver.driverId,
+      name: drivername,
+      phoneNumber:phoneNumber,
+       licenseNumber:license
+    };
 
-    // console.log(updatedCustomer);
+     console.log(updatedDriver);
 
     const token = localStorage.getItem("token");
 
-    console.log(license)
-    console.log(drivername)
-    console.log(phoneNumber)
+    console.log(license);
+    console.log(drivername);
+    console.log(phoneNumber);
 
-    // try {
-    //   const response = await fetch(`http://localhost:3000/api/booking/`, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //     body: JSON.stringify(updatedCustomer),
-    //   });
+    try {
+      const response = await fetch(`http://localhost:3000/api/drivers/`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedCustomer),
+      });
 
-    //   if (!response.ok) {
-    //     throw new Error("Invalid username or password");
-    //   }
+      if (!response.ok) {
+        throw new Error("Invalid username or password");
+      }
 
-    //   const data = await response.json();
-    //   console.log("Response Data:", data);
-    //   window.location.reload();
-    // } catch (error) {
-    //   console.error("Error:", error.message);
-    //   setError(error.message);
-    // }
+      const data = await response.json();
+      console.log("Response Data:", data);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error:", error.message);
+      setError(error.message);
+    }
 
-    // const data = await res.json();
+    const data = await res.json();
     //setBookings(data.bookings);
 
     setIsModalOpen(false);
@@ -93,7 +94,7 @@ export default function DriverTable() {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-xl font-semibold mb-4">Drivers Details</h2>
+      <h2 className="text-xl font-semibold mb-4">Drivers Details 2</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
