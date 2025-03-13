@@ -16,11 +16,11 @@ export default function Home() {
     <div className="">
       <main className="">
         {/* <Table columns={columns} data={data} />{" "} */}
-{/* 
-        <Navbar />
-        <HeroSection /> */}
 
-        <HomePage />
+        <Navbar />
+        <HeroSection />
+
+        {/* <HomePage /> */}
 
       </main>
     </div>
